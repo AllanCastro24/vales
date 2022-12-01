@@ -1,0 +1,19 @@
+<div class="container">
+    <h3 mat-dialog-title>Desea imprimir?</h3>
+    <div mat-dialog-content>
+        Identificador: {{data.id}}
+        <p></p>
+        Titulo: {{data.title}}
+        <p></p>
+        Estado: {{data.state}}
+        <p></p>
+        Url: {{data.url}}
+        <p></p>
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="1" (click)="confirmPrint()">Imprimir</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cerrar</button>
+    </div>
+  </div>
+  

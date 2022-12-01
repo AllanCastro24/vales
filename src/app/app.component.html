@@ -62,6 +62,9 @@
         <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
+        <button mat-icon-button color="accent" (click)="printItem(i, row.id, row.title, row.state, row.url)">
+          <mat-icon aria-label="print">print</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 

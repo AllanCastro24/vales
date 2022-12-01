@@ -11,6 +11,7 @@ import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
 import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import { ValesComponent } from './dialogs/vales/vales.component';
 
 @Component({
   selector: 'app-root',
@@ -88,6 +89,22 @@ export class AppComponent implements OnInit {
       if (result === 1) {
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
         // for delete we use splice in order to remove single object from DataService
+        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        this.refreshTable();
+      }
+    });
+  }
+
+  printItem(i: number, id: number, title: string, state: string, url: string) {
+    this.index = i;
+    this.id = id;
+    const dialogRef = this.dialog.open(ValesComponent, {
+      data: {id: id, title: title, state: state, url: url}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
         this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
         this.refreshTable();
       }

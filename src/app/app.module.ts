@@ -18,6 +18,8 @@ import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
 import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { jsPDF } from "jspdf";
+import { ValesComponent } from './dialogs/vales/vales.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         AppComponent,
         AddDialogComponent,
         EditDialogComponent,
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        ValesComponent
     ],
     imports: [
         BrowserModule,
