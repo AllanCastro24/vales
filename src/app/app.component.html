@@ -11,28 +11,24 @@
 
   <div class="form">
     <mat-form-field floatPlaceholder="never" color="accent">
-      <input matInput #filter placeholder="Filter issues">
+      <input matInput #filter placeholder="Buscar...">
     </mat-form-field>
   </div>
 
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-    ng update @angular/cli @angular/core
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
       <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.title}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="state">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.state}}</mat-cell>
     </ng-container>
 
@@ -42,12 +38,12 @@
     </ng-container>
 
     <ng-container matColumnDef="created_at">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Created at</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Creación</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.created_at}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="updated_at">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Updated at</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Actualización</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.updated_at}}</mat-cell>
     </ng-container>
 
