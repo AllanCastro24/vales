@@ -24,6 +24,8 @@ export class ValesComponent implements OnInit {
   confirmPrint(): void {
     //Método para imprimir
     const doc = new jsPDF();
+    console.log(this.data);
+    alert('Generando Reporte...')
     //this.dataService.deleteIssue(this.data.id);
   }
 }
