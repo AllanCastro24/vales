@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import { vale} from '../models/models';
+import {vale} from '../models/models';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
@@ -27,7 +27,7 @@ export class DataService {
         this.dataChange.next(vales);
       },
       (error: HttpErrorResponse) => {
-      console.log (error.name + ' ' + error.message);
+        console.log (error.name + ' ' + error.message);
       });
   }
 

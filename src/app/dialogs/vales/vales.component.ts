@@ -2,6 +2,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {Component, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import jsPDF from 'jspdf';
+import { vale } from 'src/app/models/models';
 
 @Component({
   selector: 'app-vales',
@@ -11,7 +12,7 @@ import jsPDF from 'jspdf';
 export class ValesComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ValesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, public dataService: DataService) { }
+    @Inject(MAT_DIALOG_DATA) public data: vale, public dataService: DataService) { }
 
   ngOnInit(): void {
   }

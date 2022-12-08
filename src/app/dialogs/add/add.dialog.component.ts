@@ -12,7 +12,7 @@ import { vale } from '../../models/models';
 
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, //Se puso any de manera provisional, adaptar a tipo vale
+              @Inject(MAT_DIALOG_DATA) public data: vale, //Se puso any de manera provisional, adaptar a tipo vale
               public dataService: DataService) { }
 
   formControl = new FormControl('', [
