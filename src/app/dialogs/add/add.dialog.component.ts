@@ -3,6 +3,7 @@ import {Component, Inject} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Issue} from '../../models/models';
+import { vale } from '../../models/models';
 
 @Component({
   selector: 'app-add.dialog',

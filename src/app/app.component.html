@@ -23,37 +23,37 @@
   <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Folio</mat-header-cell>
       <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</mat-header-cell>
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de vale</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.title}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="state">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.state}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="url">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Url</mat-header-cell>
+    <ng-container matColumnDef="monto">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Monto</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.url}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="created_at">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Creación</mat-header-cell>
+    <ng-container matColumnDef="fecha_limite">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha límite</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.created_at}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="updated_at">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Actualización</mat-header-cell>
+    <ng-container matColumnDef="cantidad">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad de vales</mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.updated_at}}</mat-cell>
     </ng-container>
 
     <!-- actions -->
-    <ng-container matColumnDef="actions">
+    <ng-container matColumnDef="acciones">
       <mat-header-cell *matHeaderCellDef>
         <button mat-icon-button color="accent" (click)="addNew()">
           <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
@@ -67,7 +67,7 @@
         <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="printItem(i, row.id, row.title, row.state, row.url)">
+        <button mat-icon-button color="accent" (click)="printVale(i, row.id, row.title, row.state, row.url)">
           <mat-icon aria-label="print">print</mat-icon>
         </button>
       </mat-cell>

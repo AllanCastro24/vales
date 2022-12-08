@@ -5,7 +5,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Identificador" [(ngModel)]="data.id" name="id" required >
+        <input matInput #input class="form-control" placeholder="Folio" [(ngModel)]="data.id" name="id" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -13,7 +13,7 @@
     <!--Textarea for demo purposes-->
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput #input class="form-control" placeholder="Titulo" [(ngModel)]="data.title" name="title" required ></textarea>
+        <textarea matInput #input class="form-control" placeholder="Tipo de vale" [(ngModel)]="data.title" name="tipo" required ></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -21,7 +21,7 @@
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Estado" [(ngModel)]="data.state" name="state" maxlength="10" required >
+        <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.state" name="nombre" maxlength="10" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         <mat-hint align="end">{{inputstate.value?.length || 0}}/10</mat-hint>
       </mat-form-field>
@@ -29,19 +29,19 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Url" [(ngModel)]="data.url" name="url">
+        <input matInput placeholder="Monto" [(ngModel)]="data.url" name="monto">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Fecha de creación" [(ngModel)]="data.created_at" name="created_at">
+        <input matInput placeholder="Fecha límite" [(ngModel)]="data.created_at" name="fecha_limite">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Fecha de actualización" [(ngModel)]="data.updated_at" name="updated_at">
+        <input matInput placeholder="Cantidad de vales" [(ngModel)]="data.updated_at" name="cantidad">
       </mat-form-field>
     </div>
 

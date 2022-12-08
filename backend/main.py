@@ -3,8 +3,6 @@ from flask import jsonify
 
 app = Flask(__name__)
 pruebas = True #Definir conexión de BD
-    response = {'message': 'success'}
-    return jsonify(response)
 
 # Eliminar vale especifico
 @app.route('/api/deleteVales/<id>', methods=['DELETE'])
