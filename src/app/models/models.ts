@@ -1,12 +1,3 @@
-export class Issue {
-  id: number;
-  title: string;
-  state: string;
-  url: string;
-  created_at: string;
-  updated_at: string;
-}
-
 export class vale{
   id_vale: number;
   tipo_vale: string;
