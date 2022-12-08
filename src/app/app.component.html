@@ -1,5 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="warn">
+  <button mat-icon-button onclick="alert('Regresar a la app...')">
+    <mat-icon>keyboard_arrow_left</mat-icon> 
+  </button>
+
   <span>LJEANS Vales</span>
+  
   <span class="spacer"></span>
   Recargar datos:
   <button mat-icon-button (click)="refresh()">
@@ -50,7 +55,7 @@
     <!-- actions -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
-        <button mat-icon-button color="primary" (click)="addNew()">
+        <button mat-icon-button color="accent" (click)="addNew()">
           <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
         </button>
       </mat-header-cell>

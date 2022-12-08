@@ -26,6 +26,8 @@ export class ValesComponent implements OnInit {
     const doc = new jsPDF();
     console.log(this.data);
     alert('Generando Reporte...')
+
+    // Hacer un for de 1 a 6, si es numero impar se imprime a la izquierda, si es par, a la derecha
     //this.dataService.deleteIssue(this.data.id);
   }
 }
