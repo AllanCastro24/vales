@@ -166,7 +166,7 @@ export class ExampleDataSource extends DataSource<vale> {
     return merge(...displayDataChanges).pipe(map( () => {
         // Filter data
         this.filteredData = this._exampleDatabase.vales.slice().filter((vales: vale) => {
-          const searchStr = (vales.nombre_distribuidor).toLowerCase();
+          const searchStr = ("vales.nombre_distribuidor").toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
 

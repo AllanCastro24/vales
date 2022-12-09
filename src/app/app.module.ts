@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -43,7 +41,8 @@ import { ValesComponent } from './dialogs/vales/vales.component';
         MatTableModule,
         MatToolbarModule,
         MatPaginatorModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatDialogModule 
     ],
     providers: [
         DataService

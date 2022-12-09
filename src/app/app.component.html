@@ -24,32 +24,32 @@
 
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Folio</mat-header-cell>
-      <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+      <mat-cell *matCellDef="let row" >{{row.id_vale}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tipo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de vale</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.title}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.tipo_vale}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nombre">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.state}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.nombre_distribuidor}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="monto">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Monto</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.url}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.monto_vale}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="fecha_limite">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha límite</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.created_at}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.fecha_limite}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="cantidad">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Cantidad de vales</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.updated_at}}</mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.cantidad}}</mat-cell>
     </ng-container>
 
     <!-- actions -->
