@@ -2,7 +2,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FormControl, Validators} from '@angular/forms';
-import { vale } from '../../models/models';
 
 @Component({
   selector: 'app-add.dialog',
@@ -12,7 +11,7 @@ import { vale } from '../../models/models';
 
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: vale, //Se puso any de manera provisional, adaptar a tipo vale
+              @Inject(MAT_DIALOG_DATA) public data: any, //Se puso any de manera provisional, adaptar a tipo vale
               public dataService: DataService) { }
 
   formControl = new FormControl('', [

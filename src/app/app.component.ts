@@ -57,13 +57,13 @@ export class AppComponent implements OnInit {
     });
   }
 
-  editVale(i: number, id: number, title: string, state: string, url: string, created_at: string, updated_at: string) {
-    this.id = id;
+  editVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string, monto_vale: number, fecha_limite: Date, cantidad: number) {
+    this.id = id_vale;
     // index row is used just for debugging proposes and can be removed
     this.index = i;
     console.log(this.index);
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {id: id, title: title, state: state, url: url, created_at: created_at, updated_at: updated_at}
+      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -78,11 +78,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  deleteVale(i: number, id: number, title: string, state: string, url: string) {
+  deleteVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string, monto_vale: number, fecha_limite: Date, cantidad: number) {
     this.index = i;
-    this.id = id;
+    this.id = id_vale;
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: {id: id, title: title, state: state, url: url}
+      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -95,11 +95,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  printVale(i: number, id: number, title: string, state: string, url: string) {
+  printVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string, monto_vale: number, fecha_limite: Date, cantidad: number) {
     this.index = i;
-    this.id = id;
+    this.id = id_vale;
     const dialogRef = this.dialog.open(ValesComponent, {
-      data: {id: id, title: title, state: state, url: url}
+      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -166,7 +166,7 @@ export class ExampleDataSource extends DataSource<vale> {
     return merge(...displayDataChanges).pipe(map( () => {
         // Filter data
         this.filteredData = this._exampleDatabase.vales.slice().filter((vales: vale) => {
-          const searchStr = (vales.id_vale + vales.tipo_vale + vales.nombre_distribuidor + vales.monto_vale).toLowerCase();
+          const searchStr = (vales.nombre_distribuidor).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
 

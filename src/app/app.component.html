@@ -61,13 +61,13 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let row; let i=index;">
-        <button mat-icon-button color="accent" (click)="editVale(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+        <button mat-icon-button color="accent" (click)="editVale(i, row.id_vale, row.tipo_vale, row.nombre_distribuidor, row.monto_vale, row.fecha_limite, row.cantidad)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="deleteVale(i, row.id, row.title, row.state, row.url)">
+        <button mat-icon-button color="accent" (click)="deleteVale(i, row.id_vale, row.tipo_vale, row.nombre_distribuidor, row.monto_vale, row.fecha_limite, row.cantidad)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
-        <button mat-icon-button color="accent" (click)="printVale(i, row.id, row.title, row.state, row.url)">
+        <button mat-icon-button color="accent" (click)="printVale(i, row.id_vale, row.tipo_vale, row.nombre_distribuidor, row.monto_vale, row.fecha_limite, row.cantidad)">
           <mat-icon aria-label="print">print</mat-icon>
         </button>
       </mat-cell>
