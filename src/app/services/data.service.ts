@@ -5,15 +5,15 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-  private readonly API_URL = 'https://api.github.com/repos/angular/angular/issues';
+  private readonly API_URL = 'http://localhost:5000/';
 
-  dataChange: BehaviorSubject<vale[]> = new BehaviorSubject<vale[]>([]);
+  dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
 
   constructor (private httpClient: HttpClient) {}
 
-  get vales(): vale[] {
+  get vales(): any[] {
     return this.dataChange.value;
   }
 
@@ -23,8 +23,10 @@ export class DataService {
 
   // Métodos
   getAllVales(): void {
-    this.httpClient.get<vale[]>(this.API_URL).subscribe(vales => {
-        this.dataChange.next(vales);
+    this.httpClient.get<any[]>(this.API_URL + "api/getVales").subscribe(vales => {
+        if (vales != null){
+          this.dataChange.next(vales);
+        }
       },
       (error: HttpErrorResponse) => {
         console.log (error.name + ' ' + error.message);
