@@ -8,7 +8,6 @@ export class DataService {
   private readonly API_URL = 'http://localhost:5000/';
 
   dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  // Temporarily stores data from dialogs
   dialogData: any;
 
   constructor (private httpClient: HttpClient) {}
@@ -43,5 +42,13 @@ export class DataService {
 
   deleteVale (id_vale: number): void {
     console.log(id_vale);
+  }
+
+  getDistribuidores():void{
+    // <select id="listCenTra">
+    //           <option value="" *ngFor="let dato of datos_Cen_Tra">
+    //              {{dato.name_com}}
+    //          </option>
+    //         </select>
   }
 }

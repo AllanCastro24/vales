@@ -5,14 +5,18 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Folio" [(ngModel)]="data.id_vale" name="id" required >
+        <input matInput #input class="form-control" placeholder="Folio" [(ngModel)]="data.id_vale" name="id" [disabled]="true">
       </mat-form-field>
     </div>
 
-    <!--Textarea for demo purposes-->
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput #input class="form-control" placeholder="Tipo de vale" [(ngModel)]="data.tipo_vale" name="tipo" required ></textarea>
+        <mat-label>Tipo de vale</mat-label>
+        <select matNativeControl #input class="form-control" [(ngModel)]="data.tipo_vale" name="tipo" required>
+          <option value="E">Vale electrónico</option>
+          <option value="L">LCard</option>
+          <option value="P">Vale impreso</option>
+        </select>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -33,13 +37,13 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Fecha límite" [(ngModel)]="data.fecha_limite" name="fecha_limite">
+        <input matInput placeholder="Fecha límite" [(ngModel)]="data.fecha_limite" name="fecha_limite" required>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Cantidad de vales" [(ngModel)]="data.cantidad" name="cantidad">
+        <input matInput placeholder="Cantidad de vales" [(ngModel)]="data.cantidad" name="cantidad" required>
       </mat-form-field>
     </div>
 

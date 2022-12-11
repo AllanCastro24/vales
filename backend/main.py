@@ -26,7 +26,7 @@ mysql.init_app(app)
 # Eliminar vale especifico
 @app.route('/api/deleteVales/<id>', methods=['DELETE'])
 def deleteVales(id):
-    response = {'message': 'success'}
+    response = {'message': 'Eliminado con éxito'}
     return jsonify(response)
 
 # Mostrar vales activos
@@ -44,19 +44,26 @@ def getVales():
         
     return response
 
+# Mostrar distribuidores activos
+@app.route('/api/getDistribuidores', methods=['GET'])
+def getDistribuidores():
+    conn = mysql.connect()
+    cursor =conn.cursor()
+
+    cursor.execute("SELECT * from distribuidores WHERE estado == 'A'")
+    data = cursor.fetchone()
+    if data != None:
+        response = jsonify(data)
+    else:
+        response = ""
+        
+    return response
+
 # Home
 @app.route('/')
 def home():
     response = {
         'Mensaje': 'Backend activo',
-        # 'Modelo': 'Imprimiendo modelo...',
-        # 'id_vale': '',
-        # 'tipo_vale': '',
-        # 'id_ditribuidor': '',
-        # 'nombre_distribuidor': '',
-        # 'monto_vale': '',
-        # 'fecha_limite': '',
-        # 'cantidad': ''
     }
     return jsonify(response)
 

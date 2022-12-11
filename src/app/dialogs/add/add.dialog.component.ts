@@ -33,6 +33,7 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
+    console.log(this.data);
     this.dataService.addVale(this.data);
   }
 }
