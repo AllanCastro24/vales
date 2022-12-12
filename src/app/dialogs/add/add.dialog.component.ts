@@ -18,6 +18,11 @@ export class AddDialogComponent {
     Validators.required
   ]);
 
+  ngOnInit(): void {
+    console.log("Entré al ADD");
+    this.dataService.getDistribuidores();
+  }
+
   getErrorMessage() {
     return this.formControl.hasError('required') ? 'Campo requerido' :
       this.formControl.hasError('email') ? 'No es un correo valido' :

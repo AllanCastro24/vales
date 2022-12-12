@@ -50,16 +50,16 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         // Despues de cerrar, recagar
-        // For add we're just pushing a new row inside DataService
+        // Para agregar hacer un push al servicio
         this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
         this.refreshTable();
       }
     });
   }
 
-  editVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string, monto_vale: number, fecha_limite: Date, cantidad: number) {
+  editVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string,apellido_distribuidor: string, clave_distribuidor: number, monto_vale: number, fecha_limite: Date, cantidad: number) {
     this.id = id_vale;
-    // index row is used just for debugging proposes and can be removed
+    // Indice utilizado para debugear
     this.index = i;
     console.log(this.index);
     const dialogRef = this.dialog.open(EditDialogComponent, {
@@ -68,17 +68,14 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        // When using an edit things are little different, firstly we find record inside DataService by id
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
-        // Then you update that record using data from dialogData (values you enetered)
         this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
-        // And lastly refresh table
         this.refreshTable();
       }
     });
   }
 
-  deleteVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string, monto_vale: number, fecha_limite: Date, cantidad: number) {
+  deleteVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string,apellido_distribuidor: string, clave_distribuidor: number, monto_vale: number, fecha_limite: Date, cantidad: number) {
     this.index = i;
     this.id = id_vale;
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
@@ -88,14 +85,13 @@ export class AppComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
-        // for delete we use splice in order to remove single object from DataService
         this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
         this.refreshTable();
       }
     });
   }
 
-  printVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string, monto_vale: number, fecha_limite: Date, cantidad: number) {
+  printVale(i: number, id_vale: number, tipo_vale: string, nombre_distribuidor: string,apellido_distribuidor: string, clave_distribuidor: number, monto_vale: number, fecha_limite: Date, cantidad: number) {
     this.index = i;
     this.id = id_vale;
     const dialogRef = this.dialog.open(ValesComponent, {
@@ -139,20 +135,17 @@ export class ExampleDataSource extends DataSource<vale> {
     this.filterChange.next(filter);
   }
 
-  filteredData: vale[] = [];
-  renderedData: vale[] = [];
+  filteredData: any[] = [];
+  renderedData: any[] = [];
 
   constructor(public _exampleDatabase: DataService,
               public _paginator: MatPaginator,
               public _sort: MatSort) {
     super();
-    // Reset to the first page when the user changes the filter.
     this.filterChange.subscribe(() => this._paginator.pageIndex = 0);
   }
 
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<vale[]> {
-    // Listen for any changes in the base data, sorting, filtering, or pagination
     const displayDataChanges = [
       this._exampleDatabase.dataChange,
       this._sort.sortChange,
@@ -164,16 +157,15 @@ export class ExampleDataSource extends DataSource<vale> {
 
 
     return merge(...displayDataChanges).pipe(map( () => {
-        // Filter data
-        this.filteredData = this._exampleDatabase.vales.slice().filter((vales: vale) => {
-          const searchStr = ("vales.nombre_distribuidor").toLowerCase();
+        // Datos filtrados
+        this.filteredData = this._exampleDatabase.vales.slice().filter((vales: any) => {
+          const searchStr = (vales[6] + " " + vales[7]).toLowerCase();
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
 
-        // Sort filtered data
+        // Ordenar datos filtrados
         const sortedData = this.sortData(this.filteredData.slice());
 
-        // Grab the page's slice of the filtered sorted data.
         const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
         this.renderedData = sortedData.splice(startIndex, this._paginator.pageSize);
         return this.renderedData;
@@ -184,8 +176,8 @@ export class ExampleDataSource extends DataSource<vale> {
   disconnect() {}
 
 
-  /** Returns a sorted copy of the database data. */
-  sortData(data: vale[]): vale[] {
+  /** Retornar una copia ordenada del modelo */
+  sortData(data: any[]): any[] {
     if (!this._sort.active || this._sort.direction === '') {
       return data;
     }
@@ -195,12 +187,12 @@ export class ExampleDataSource extends DataSource<vale> {
       let propertyB: number | string = '';
 
       switch (this._sort.active) {
-        case 'id': [propertyA, propertyB] = [a.id_vale, b.id_vale]; break;
-        case 'tipo': [propertyA, propertyB] = [a.tipo_vale, b.tipo_vale]; break;
-        case 'nombre': [propertyA, propertyB] = [a.nombre_distribuidor, b.nombre_distribuidor]; break;
-        case 'monto': [propertyA, propertyB] = [a.monto_vale, b.monto_vale]; break;
-        case 'fecha_limite': [propertyA, propertyB] = [a.fecha_limite.toLocaleString(), b.fecha_limite.toLocaleString()]; break;
-        case 'cantidad': [propertyA, propertyB] = [a.cantidad, b.cantidad]; break;
+        case 'id': [propertyA, propertyB] = [a[0], b[0]]; break;
+        case 'tipo': [propertyA, propertyB] = [a[1], b[1]]; break;
+        case 'nombre': [propertyA, propertyB] = [a[6] + " " + a[7], b[6] + " " + b[7]]; break;
+        case 'monto': [propertyA, propertyB] = [a[3], a[3]]; break;
+        case 'fecha_limite': [propertyA, propertyB] = [a[4].toLocaleString(), b[4].toLocaleString()]; break;
+        case 'cantidad': [propertyA, propertyB] = [a[5], b[5]]; break;
       }
 
       const valueA = isNaN(+propertyA) ? propertyA : +propertyA;

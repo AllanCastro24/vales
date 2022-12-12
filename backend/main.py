@@ -4,7 +4,7 @@ from flaskext.mysql import MySQL
 from flask_cors import CORS
 
 app = Flask(__name__)
-pruebas = False #Definir conexión de BD
+pruebas = True #Definir conexión de BD
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 mysql = MySQL()
 
@@ -12,7 +12,7 @@ if pruebas:
     print('Endpoint: localhost')
     app.config['MYSQL_DATABASE_USER'] = 'root'
     app.config['MYSQL_DATABASE_PASSWORD'] = ''
-    app.config['MYSQL_DATABASE_DB'] = 'vales'
+    app.config['MYSQL_DATABASE_DB'] = 'ljeans'
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 else:
     print('Endpoint: 193.84.177.213')
@@ -33,10 +33,10 @@ def deleteVales(id):
 @app.route('/api/getVales', methods=['GET'])
 def getVales():
     conn = mysql.connect()
-    cursor =conn.cursor()
+    cursor = conn.cursor()
 
-    cursor.execute("SELECT * from vales")
-    data = cursor.fetchone()
+    cursor.execute("SELECT vales.*,distribuidores.nombre_distribuidor,distribuidores.apellidos_distribuidor FROM vales,distribuidores WHERE vales.id_distribuidor = distribuidores.id_distribuidor;")
+    data = cursor.fetchall()
     if data != None:
         response = jsonify(data)
     else:
@@ -50,8 +50,8 @@ def getDistribuidores():
     conn = mysql.connect()
     cursor =conn.cursor()
 
-    cursor.execute("SELECT * from distribuidores WHERE estado == 'A'")
-    data = cursor.fetchone()
+    cursor.execute("SELECT distribuidores.id_distribuidor,distribuidores.nombre_distribuidor,distribuidores.apellidos_distribuidor from distribuidores WHERE estado = 'A'")
+    data = cursor.fetchall()
     if data != None:
         response = jsonify(data)
     else:

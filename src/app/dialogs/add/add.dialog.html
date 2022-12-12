@@ -26,6 +26,10 @@
       <mat-form-field color="accent">
         <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre_distribuidor" name="nombre" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      
+        <select matNativeControl #input class="form-control" [(ngModel)]="data.nombre_distribuidor" name="nombre" required>
+
+        </select>
       </mat-form-field>
     </div>
 

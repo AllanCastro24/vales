@@ -32,6 +32,18 @@ export class DataService {
       });
   }
 
+  getDistribuidores():void{
+    this.httpClient.get<any[]>(this.API_URL + "api/getDistribuidores").subscribe(distribuidores => {
+      if (distribuidores != null){
+        console.log(distribuidores)
+        this.dataChange.next(distribuidores);
+      }
+    },
+    (error: HttpErrorResponse) => {
+      console.log (error.name + ' ' + error.message);
+    });
+  }
+
   addVale (vales: vale): void {
     this.dialogData = vales;
   }
@@ -42,13 +54,5 @@ export class DataService {
 
   deleteVale (id_vale: number): void {
     console.log(id_vale);
-  }
-
-  getDistribuidores():void{
-    // <select id="listCenTra">
-    //           <option value="" *ngFor="let dato of datos_Cen_Tra">
-    //              {{dato.name_com}}
-    //          </option>
-    //         </select>
   }
 }

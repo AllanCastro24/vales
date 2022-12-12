@@ -19,7 +19,7 @@
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre_distribuidor" name="nombre" required >
+        <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre_distribuidor + ' ' + data.apellido_distribuidor" name="nombre" required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
