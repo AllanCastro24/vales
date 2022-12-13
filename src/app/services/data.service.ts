@@ -32,11 +32,10 @@ export class DataService {
       });
   }
 
-  getDistribuidores():void{
+  getDistribuidores():any{
     this.httpClient.get<any[]>(this.API_URL + "api/getDistribuidores").subscribe(distribuidores => {
       if (distribuidores != null){
-        console.log(distribuidores)
-        this.dataChange.next(distribuidores);
+        //this.dataChange.next(distribuidores);
       }
     },
     (error: HttpErrorResponse) => {
@@ -44,15 +43,14 @@ export class DataService {
     });
   }
 
-  addVale (vales: vale): void {
+  addVale (vales: any): void {
     this.dialogData = vales;
   }
 
-  updateVale (vales: vale): void {
+  updateVale (vales: any): void {
     this.dialogData = vales;
   }
 
-  deleteVale (id_vale: number): void {
-    console.log(id_vale);
+  deleteVale (id_vale: any): void {
   }
 }
