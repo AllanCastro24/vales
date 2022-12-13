@@ -29,6 +29,18 @@ def deleteVales(id):
     response = {'message': 'Eliminado con éxito'}
     return jsonify(response)
 
+# Modificar vale especifico
+@app.route('/api/editVales/<id>', methods=['POST'])
+def editVales(id):
+    response = {'message': 'Modificado con éxito'}
+    return jsonify(response)
+
+# Insertar vales
+@app.route('/api/addVales/<id>', methods=['POST'])
+def addVales(id):
+    response = {'message': 'Agregado con éxito'}
+    return jsonify(response)
+
 # Mostrar vales activos
 @app.route('/api/getVales', methods=['GET'])
 def getVales():
