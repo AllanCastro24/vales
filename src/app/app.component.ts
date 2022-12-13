@@ -61,9 +61,8 @@ export class AppComponent implements OnInit {
     this.id = id_vale;
     // Indice utilizado para debugear
     this.index = i;
-    console.log(this.index);
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
+      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, apellido_distribuidor:apellido_distribuidor,clave_distribuidor: clave_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -79,7 +78,7 @@ export class AppComponent implements OnInit {
     this.index = i;
     this.id = id_vale;
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
+      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor,apellido_distribuidor: apellido_distribuidor,clave_distribuidor: clave_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -95,13 +94,13 @@ export class AppComponent implements OnInit {
     this.index = i;
     this.id = id_vale;
     const dialogRef = this.dialog.open(ValesComponent, {
-      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
+      data: {id_vale: id_vale, tipo_vale: tipo_vale, nombre_distribuidor: nombre_distribuidor,apellido_distribuidor: apellido_distribuidor,clave_distribuidor:clave_distribuidor, monto_vale: monto_vale, fecha_limite: fecha_limite, cantidad: cantidad}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
-        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        //const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
+        //this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
         this.refreshTable();
       }
     });
