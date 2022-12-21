@@ -24,30 +24,31 @@
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre_distribuidor" name="nombre" required >
-        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        <!--input matInput #inputstate class="form-control" placeholder="Distribuidor" [(ngModel)]="data.nombre_distribuidor" name="nombre" required -->
+        <mat-label>Distribuidor</mat-label>
       
-        <select matNativeControl #input class="form-control" [(ngModel)]="data.nombre_distribuidor" name="nombre" required>
-
+        <select matNativeControl #input class="form-control" [(ngModel)]="data.id_ditribuidor" name="nombre" required>
+          <option value="1">Pito Perez</option>
         </select>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Monto" [(ngModel)]="data.monto_vale" name="monto">
+        <input matInput type="number" placeholder="Monto" [(ngModel)]="data.monto_vale" name="monto">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Fecha límite" [(ngModel)]="data.fecha_limite" name="fecha_limite" required>
+        <input matInput type="date" placeholder="Fecha límite" [(ngModel)]="data.fecha_limite" name="fecha_limite" required>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Cantidad de vales" [(ngModel)]="data.cantidad" name="cantidad" required>
+        <input matInput type="number" placeholder="Cantidad de vales" [(ngModel)]="data.cantidad" name="cantidad" required>
       </mat-form-field>
     </div>
 

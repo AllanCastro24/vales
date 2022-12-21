@@ -45,10 +45,28 @@ export class DataService {
 
   addVale (vales: any): void {
     this.dialogData = vales;
+
+    this.httpClient.post<any[]>(this.API_URL + "api/addVales",vales).subscribe(vale => {
+      if (vale != null){
+        console.log("Agregado con éxito");
+      }
+    },
+    (error: HttpErrorResponse) => {
+      console.log (error.name + ' ' + error.message);
+    });
   }
 
   updateVale (vales: any): void {
     this.dialogData = vales;
+    
+    this.httpClient.post<any[]>(this.API_URL + "api/editVales",vales).subscribe(vale => {
+      if (vale != null){
+        console.log("Modificado con éxito");
+      }
+    },
+    (error: HttpErrorResponse) => {
+      console.log (error.name + ' ' + error.message);
+    });
   }
 
   deleteVale (id_vale: any): void{

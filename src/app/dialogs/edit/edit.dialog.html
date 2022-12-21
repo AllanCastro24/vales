@@ -5,13 +5,19 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Folio" [(ngModel)]="data.id_vale" name="id" required >
+        <input matInput #input class="form-control" placeholder="Folio" [(ngModel)]="data.id_vale" name="id" [disabled]="true" required>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput #input class="form-control" placeholder="Tipo de vale" [(ngModel)]="data.tipo_vale" name="tipo" required ></textarea>
+        <mat-label>Tipo de vale</mat-label>
+        <select matNativeControl #input class="form-control" [(ngModel)]="data.tipo_vale" name="tipo" required>
+          <option value="E">Vale electrónico</option>
+          <option value="L">LCard</option>
+          <option value="P">Vale impreso</option>
+        </select>
+
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
@@ -19,26 +25,29 @@
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre_distribuidor + ' ' + data.apellido_distribuidor" name="nombre" required >
+        <input matInput #inputstate class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre_distribuidor + ' ' + data.apellido_distribuidor" name="nombre" [disabled]="true" required>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
         <mat-form-field color="accent">
-          <input matInput placeholder="Monto" [(ngModel)]="data.monto_vale" name="monto">
+          <input matInput type="number" placeholder="Monto" [(ngModel)]="data.monto_vale" name="monto" required>
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Fecha límite" [(ngModel)]="data.fecha_limite" name="fecha_limite">
+        <input matInput type="date" placeholder="Fecha límite" [(ngModel)]="data.fecha_limite" name="fecha_limite" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput placeholder="Cantidad de vales" [(ngModel)]="data.cantidad" name="cantidad">
+        <input matInput type="number" placeholder="Cantidad de vales" [(ngModel)]="data.cantidad" name="cantidad" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 

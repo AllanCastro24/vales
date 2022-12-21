@@ -1,7 +1,8 @@
-from flask import Flask
+from flask import Flask, request
 from flask import jsonify
 from flaskext.mysql import MySQL
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 pruebas = True #Definir conexión de BD
@@ -35,15 +36,44 @@ def deleteVales(id):
     return jsonify(response)
 
 # Modificar vale especifico
-@app.route('/api/editVales/<id>', methods=['POST'])
-def editVales(id):
-    response = {'message': 'Modificado con éxito'}
+@app.route('/api/editVales', methods=['POST'])
+def editVales():
+    if request.method == 'POST':
+        # {'id_vale': 5, 'tipo_vale': 'E', 'nombre_distribuidor': 'Mario', 'apellido_distribuidor': 'Mares', 'clave_distribuidor': 3, 'monto_vale': '500', 'fecha_limite': '2022-12-20', 'cantidad': 4}
+        # data["tipo_vale"]
+        # Decodificar datos
+        data = json.loads(request.data.decode())
+        print(data)
+
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute("UPDATE ljeans.vales SET tipo_vale=%s, id_distribuidor=%s, monto_vale=%s, fecha_limite=%s, cantidad=%s WHERE id_vale=%s;",(data["tipo_vale"],data["clave_distribuidor"],data["monto_vale"],data["fecha_limite"],data["cantidad"],data["id_vale"]))
+        conn.commit()
+        
+        response = {'message': 'Modificado con exito'}
+    else:
+        response = {'message': 'No se pudo modificar'}
+    
     return jsonify(response)
 
 # Insertar vales
-@app.route('/api/addVales/<id>', methods=['POST'])
-def addVales(id):
-    response = {'message': 'Agregado con éxito'}
+@app.route('/api/addVales', methods=['POST'])
+def addVales():
+    if request.method == 'POST':
+        # {'tipo_vale': 'L', 'id_ditribuidor': '1', 'monto_vale': 1500, 'fecha_limite': '2022-12-20', 'cantidad': 5}
+        # data["tipo_vale"]
+        # Decodificar datos
+        data = json.loads(request.data.decode())
+        
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO ljeans.vales (tipo_vale, id_distribuidor, monto_vale, fecha_limite, cantidad) VALUES(%s, %s, %s, %s, %s);",(data["tipo_vale"],data["id_ditribuidor"],data["monto_vale"],data["fecha_limite"],data["cantidad"]))
+        conn.commit()
+        
+        response = {'message': 'Agregado con exito'}
+    else:
+        response = {'message': 'No se pudo agregar'}
+    
     return jsonify(response)
 
 # Mostrar vales activos

@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
         // Para agregar hacer un push al servicio
         this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
         this.refreshTable();
+        this.getVales();
       }
     });
   }
@@ -67,9 +68,11 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
+        // Despues de cerrar, recagar
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
         this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
         this.refreshTable();
+        this.getVales();
       }
     });
   }
@@ -83,9 +86,10 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
+        // Despues de cerrar, recagar
         const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
         this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
-        this.refreshTable();
+        this.refresh();
       }
     });
   }
@@ -99,8 +103,7 @@ export class AppComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        //const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id_vale === this.id);
-        //this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        // Despues de cerrar, recagar
         this.refreshTable();
       }
     });
