@@ -24,9 +24,14 @@ else:
 mysql.init_app(app)
 
 # Eliminar vale especifico
-@app.route('/api/deleteVales/<id>', methods=['DELETE'])
+@app.route('/api/deleteVales/<id>', methods=['POST'])
 def deleteVales(id):
-    response = {'message': 'Eliminado con éxito'}
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM ljeans.vales WHERE id_vale=%s;",id)
+    conn.commit()
+
+    response = {'message': 'Eliminado con exito'}
     return jsonify(response)
 
 # Modificar vale especifico

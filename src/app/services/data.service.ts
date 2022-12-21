@@ -51,6 +51,14 @@ export class DataService {
     this.dialogData = vales;
   }
 
-  deleteVale (id_vale: any): void {
+  deleteVale (id_vale: any): void{
+    this.httpClient.post<any[]>(this.API_URL + "api/deleteVales/" + id_vale,id_vale).subscribe(vale => {
+      if (vale != null){
+        console.log("Eliminado con éxito");
+      }
+    },
+    (error: HttpErrorResponse) => {
+      console.log (error.name + ' ' + error.message);
+    });
   }
 }
