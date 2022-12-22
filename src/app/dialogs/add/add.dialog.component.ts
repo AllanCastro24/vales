@@ -19,7 +19,6 @@ export class AddDialogComponent {
   ]);
 
   ngOnInit(): void {
-    console.log("Entré al ADD");
     this.dataService.getDistribuidores();
   }
 
@@ -38,7 +37,6 @@ export class AddDialogComponent {
   }
 
   public confirmAdd(): void {
-    console.log(this.data);
     this.dataService.addVale(this.data);
   }
 }
